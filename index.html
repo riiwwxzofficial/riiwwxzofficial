@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>KEII PAYMENT</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+/* ===== VIDEO BG ===== */
+.bg-video{
+  position:fixed;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  top:0;
+  left:0;
+  z-index:-2;
+}
+
+.overlay{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.5);
+  z-index:-1;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* ===== CARD ===== */
+.card{
+  width:360px;
+  padding:28px;
+  border-radius:22px;
+  backdrop-filter:blur(16px);
+  background:rgba(255,255,255,0.15);
+  color:white;
+  text-align:center;
+  box-shadow:0 10px 40px rgba(0,0,0,.45);
+}
+
+.title{
+  font-size:26px;
+  font-weight:bold;
+}
+
+.subtitle{
+  font-size:13px;
+  opacity:.85;
+  margin-bottom:20px;
+}
+
+.payment-box{
+  background:rgba(255,255,255,.12);
+  padding:14px;
+  border-radius:12px;
+  margin-bottom:12px;
+  transition:.25s;
+}
+
+.payment-box:hover{
+  transform:scale(1.05);
+}
+
+.btn{
+  margin-top:8px;
+  padding:6px 12px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:12px;
+  background:#0d6efd;
+  color:white;
+}
+
+.btn:hover{
+  background:#0b5ed7;
+}
+
+/* MUSIC BUTTON */
+.music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#0d6efd;
+  border:none;
+  color:white;
+  padding:12px 14px;
+  border-radius:50%;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 5px 20px rgba(0,0,0,.4);
+}
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO -->
+<video autoplay muted loop playsinline class="bg-video">
+  <source src="https://h.uguu.se/sUXyZdpY.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="https://h.uguu.se/wtiFyEOy.mp3" type="audio/mpeg">
+</audio>
+
+<!-- CARD -->
+<div class="card">
+  <div class="title">KEII PAYMENT</div>
+  <div class="subtitle">Payment Gateway</div>
+
+  <div class="payment-box">
+    💙 DANA
+    <br>0895401998581<br>A/N ANI
+    <br>
+    <button class="btn" onclick="copyText('0895401998581')">Copy</button>
+  </div>
+
+  <div class="payment-box">
+    💚 GOPAY
+    <br>0895401998581<br>A/N RADITYA
+    <br>
+    <button class="btn" onclick="copyText('0895401998581')">Copy</button>
+  </div>
+
+  <div class="payment-box">
+    🟦 QRIS
+    <br>
+    <button class="btn" onclick="openQRIS()">Buka QRIS</button>
+  </div>
+</div>
+
+<!-- MUSIC BUTTON -->
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+<script>
+const music = document.getElementById("bgMusic");
+
+/* autoplay setelah user klik layar (biar ga diblok browser) */
+document.body.addEventListener("click", () => {
+  music.play().catch(()=>{});
+}, { once:true });
+
+function toggleMusic(){
+  if(music.paused){
+    music.play();
+  } else {
+    music.pause();
+  }
+}
+
+function copyText(text){
+  navigator.clipboard.writeText(text);
+  alert("Nomor berhasil disalin!");
+}
+
+function openQRIS(){
+  window.open("https://h.uguu.se/wefowjZZ.jpg", "_blank");
+}
+</script>
+
+</body>
+</html>
