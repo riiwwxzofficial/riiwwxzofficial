@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Payment Gateway - Dori</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+/* ===== VIDEO BG ===== */
+#bgVideo{
+  position:fixed;
+  right:0;
+  bottom:0;
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+  z-index:-3;
+  filter:brightness(.35);
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#0d47a1aa,#1565c0aa);
+  z-index:-2;
+}
+
+/* ===== bubble ===== */
+.bubble{
+  position:absolute;
+  bottom:-120px;
+  background:rgba(255,255,255,.12);
+  border-radius:50%;
+  animation:float 15s infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(0)}
+  to{transform:translateY(-120vh)}
+}
+
+/* ===== layout ===== */
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  overflow:hidden;
+}
+
+/* ===== card ===== */
+.card{
+  backdrop-filter:blur(18px);
+  background:rgba(0,0,0,.45);
+  padding:30px;
+  border-radius:20px;
+  width:350px;
+  text-align:center;
+  box-shadow:0 0 30px rgba(0,0,0,.6);
+  overflow-y:auto;
+  max-height:92vh;
+}
+
+h1{
+  font-size:22px;
+  margin-bottom:18px;
+}
+
+/* payment item */
+.pay{
+  background:rgba(255,255,255,.1);
+  padding:12px;
+  margin:10px 0;
+  border-radius:12px;
+  transition:.3s;
+}
+
+.pay:hover{
+  background:rgba(255,255,255,.2);
+  transform:scale(1.04);
+}
+
+.label{font-weight:bold;font-size:14px;}
+.number{font-size:15px;margin-top:4px;}
+.name{font-size:12px;opacity:.7;}
+
+/* tombol */
+.btn{
+  margin-top:10px;
+  width:100%;
+  border:none;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+/* warna tombol */
+.music{background:#00c853;color:white;}
+.qris{background:#ff9800;color:white;}
+.tg{background:#229ED9;color:white;}
+.channel{background:#7b1fa2;color:white;}
+.group{background:#00897b;color:white;}
+</style>
+</head>
+
+<body>
+
+<!-- ===== VIDEO ===== -->
+<video autoplay muted loop playsinline id="bgVideo">
+  <source src="https://cdn.coverr.co/videos/coverr-blue-abstract-waves-5176/1080p.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<!-- bubble script -->
+<script>
+for(let i=0;i<20;i++){
+  const b=document.createElement('div')
+  b.className='bubble'
+  const s=Math.random()*60+20
+  b.style.width=s+'px'
+  b.style.height=s+'px'
+  b.style.left=Math.random()*100+'%'
+  b.style.animationDuration=(Math.random()*10+8)+'s'
+  document.body.appendChild(b)
+}
+</script>
+
+<div class="card">
+
+  <h1>💳 PAYMENT GATEWAY</h1>
+
+  <!-- PAYMENT -->
+  <div class="pay">
+    <div class="label">DANA</div>
+    <div class="number">083897762065</div>
+    <div class="name">A/N DORI SAMSUL HUDORI</div>
+  </div>
+
+  <div class="pay">
+    <div class="label">GOPAY</div>
+    <div class="number">082128399932</div>
+    <div class="name">A/N DORI SAMSUL HUDORI</div>
+  </div>
+
+  <div class="pay">
+    <div class="label">SEABANK</div>
+    <div class="number">901068812599</div>
+    <div class="name">A/N DORI SAMSUL HUDORI</div>
+  </div>
+
+  <!-- PAYMENT BUTTON -->
+  <a href="https://o.uguu.se/AdPXlbbr.jpg" target="_blank">
+    <button class="btn qris">📲 Bayar QRIS</button>
+  </a>
+
+  <button class="btn music" onclick="toggleMusic()">🔊 Musik</button>
+
+  <!-- TELEGRAM SECTION -->
+  <h1 style="margin-top:20px;">📢 TELEGRAM</h1>
+
+  <!-- ganti link dibawah -->
+  <a href="https://t.me/Riiwwxz_12" target="_blank">
+    <button class="btn tg">💬 Chat Telegram</button>
+  </a>
+
+  <a href="https://t.me/Reall_Testi" target="_blank">
+    <button class="btn channel">📣 Channel Telegram</button>
+  </a>
+
+  <a href="https://t.me/Riiwwxz_V1" target="_blank">
+    <button class="btn group">👥 Grup Telegram</button>
+  </a>
+
+</div>
+
+<!-- MUSIK -->
+<audio id="bgm" loop>
+  <source src="https://n.uguu.se/MeMDopcl.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music=document.getElementById("bgm");
+function toggleMusic(){
+  music.paused ? music.play() : music.pause();
+}
+window.addEventListener("click",()=>{
+  music.play().catch(()=>{});
+},{once:true});
+</script>
+
+</body>
+</html>
